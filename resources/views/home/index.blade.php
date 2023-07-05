@@ -48,83 +48,32 @@
     <section id="home" class="slider-area pt-100">
         <div class="container-fluid position-relative">
             <div class="slider-active">
-                <div class="single-slider">
-                    <div class="slider-bg">
-                        <div class="row no-gutters align-items-center ">
-                            <div class="col-lg-4 col-md-5">
-                                <div class="slider-product-image d-none d-md-block">
-                                    <img src="assets/images/slider/Dior.jpg" alt="Slider">
-                                    <div class="slider-discount-tag">
-                                        <p>-50% <br> OFF</p>
-                                    </div>
-                                </div> <!-- slider product image -->
-                            </div>
-                            <div class="col-lg-8 col-md-7">
-                                <div class="slider-product-content">
-                                    <h1 class="slider-title mb-10" data-animation="fadeInUp" data-delay="0.3s">
-                                        <span>Dior</span> Sales <span></span>
-                                    </h1>
-                                    <p class="mb-25" data-animation="fadeInUp" data-delay="0.9s"><br> decided to leave
-                                        for the far World of Grammar.</p>
-                                    <a class="main-btn" href="#" data-animation="fadeInUp" data-delay="1.5s">Explore
-                                        More <i class="lni-chevron-right"></i></a>
-                                </div> <!-- slider product content -->
-                            </div>
-                        </div> <!-- row -->
-                    </div> <!-- container -->
-                </div> <!-- single slider -->
-
-                <div class="single-slider">
-                    <div class="slider-bg">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col-lg-4 col-md-5">
-                                <div class="slider-product-image d-none d-md-block">
-                                    <img src="assets/images/slider/Zara.jpg" alt="Slider">
-                                    <div class="slider-discount-tag">
-                                        <p>-20% <br> OFF</p>
-                                    </div>
-                                </div> <!-- slider product image -->
-                            </div>
-                            <div class="col-lg-8 col-md-7">
-                                <div class="slider-product-content">
-                                    <h1 class="slider-title mb-10" data-animation="fadeInUp" data-delay="0.3s">
-                                        <span>ZARA</span> Sale! is <span>Here</span>
-                                    </h1>
-                                    <p class="mb-25" data-animation="fadeInUp" data-delay="0.9s">You can find us on the
-                                        second floor<br> in the first corridor</p>
-                                    <a class="main-btn" href="#" data-animation="fadeInUp" data-delay="1.5s">Explore
-                                        More <i class="lni-chevron-right"></i></a>
-                                </div> <!-- slider product content -->
-                            </div>
-                        </div> <!-- row -->
-                    </div> <!-- container -->
-                </div> <!-- single slider -->
-
-                <div class="single-slider">
-                    <div class="slider-bg">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col-lg-4 col-md-5">
-                                <div class="slider-product-image d-none d-md-block">
-                                    <img src="assets/images/slider/H&MM.jpg" alt="Slider">
-                                    <div class="slider-discount-tag">
-                                        <p>30%<br>OFF</p>
-                                    </div>
-                                </div> <!-- slider product image -->
-                            </div>
-                            <div class="col-lg-8 col-md-7">
-                                <div class="slider-product-content">
-                                    <h1 class="slider-title mb-10" data-animation="fadeInUp" data-delay="0.3s">
-                                        <span>Get</span> a great Discount from<span>H&M</span>
-                                    </h1>
-                                    <p class="mb-25" data-animation="fadeInUp" data-delay="0.9s">You can find us on the
-                                        first floor<br> Facing the escalator</p>
-                                    <a class="main-btn" href="#contact" data-animation="fadeInUp"
-                                        data-delay="1.5s">Contact Us <i class="lni-chevron-right"></i></a>
-                                </div> <!-- slider product content -->
-                            </div>
-                        </div> <!-- row -->
-                    </div> <!-- container -->
-                </div> <!-- single slider -->
+                @foreach ($sliders as $slider)
+                    <div class="single-slider">
+                        <div class="slider-bg">
+                            <div class="row no-gutters align-items-center ">
+                                <div class="col-lg-4 col-md-5">
+                                    <div class="slider-product-image d-none d-md-block">
+                                        <img src="{{ $slider->image }}" alt="{{ $slider->title }}">
+                                        <div class="slider-discount-tag">
+                                            <p>-{{ $slider->disccount }}% <br> OFF</p>
+                                        </div>
+                                    </div> <!-- slider product image -->
+                                </div>
+                                <div class="col-lg-8 col-md-7">
+                                    <div class="slider-product-content">
+                                        <h1 class="slider-title mb-10" data-animation="fadeInUp" data-delay="0.3s">
+                                            <span>{{ $slider->title }}</span><span></span>
+                                        </h1>
+                                        <p class="mb-25" data-animation="fadeInUp" data-delay="0.9s"><br> {{ $slider->description }}</p>
+                                        <a class="main-btn" href="#product" data-animation="fadeInUp" data-delay="1.5s">Explore
+                                            More <i class="lni-chevron-right"></i></a>
+                                    </div> <!-- slider product content -->
+                                </div>
+                            </div> <!-- row -->
+                        </div> <!-- container -->
+                    </div> <!-- single slider -->
+                @endforeach
             </div> <!-- slider active -->
             <div class="slider-social">
                 <div class="row justify-content-end">

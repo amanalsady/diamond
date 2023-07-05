@@ -2,31 +2,27 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ProductResource\Pages;
-use App\Models\Product;
+use App\Filament\Resources\SliderResource\Pages;
+use App\Models\Slider;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Filament\Tables\Filters\SelectFilter;
 use Livewire\TemporaryUploadedFile;
 use Nette\Utils\Random;
 
-class ProductResource extends Resource
+class SliderResource extends Resource
 {
-    protected static ?string $model = Product::class;
+    protected static ?string $model = Slider::class;
 
-    protected static ?string $navigationIcon = 'heroicon-s-shopping-bag';
+    protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('brand_id')
-                    ->relationship('brand', 'name')
-                    ->required(),
-                Forms\Components\TextInput::make('name')
+                Forms\Components\TextInput::make('title')
                     ->required(),
                 Forms\Components\FileUpload::make('image')
                     ->image()
@@ -34,16 +30,11 @@ class ProductResource extends Resource
                         return (string) str($file->getClientOriginalName())->prepend(Random::generate(8));
                     })
                     ->required(),
-                Forms\Components\TextInput::make('price')
-                    ->numeric()
-                    ->minValue(0)
-                    ->required(),
                 Forms\Components\TextInput::make('disccount')
                     ->numeric()
                     ->maxValue(100)
-                    ->minValue(0)
                     ->required(),
-                Forms\Components\TextInput::make('code')
+                Forms\Components\Textarea::make('description')
                     ->required(),
             ]);
     }
@@ -52,17 +43,13 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('brand.name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
                 Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('price'),
                 Tables\Columns\TextColumn::make('disccount'),
-                Tables\Columns\TextColumn::make('final_price'),
-                Tables\Columns\TextColumn::make('code'),
+                Tables\Columns\TextColumn::make('description'),
             ])
             ->filters([
-                SelectFilter::make('brand')
-                    ->relationship('brand', 'name'),
+                //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -83,9 +70,9 @@ class ProductResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListProducts::route('/'),
-            'create' => Pages\CreateProduct::route('/create'),
-            'edit' => Pages\EditProduct::route('/{record}/edit'),
+            'index' => Pages\ListSliders::route('/'),
+            'create' => Pages\CreateSlider::route('/create'),
+            'edit' => Pages\EditSlider::route('/{record}/edit'),
         ];
     }
 }
