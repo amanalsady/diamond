@@ -15,11 +15,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminSeeder::class,
         ]);
-        if (config('app.env') === 'local') {
-            $this->call([
-                BrandSeeder::class,
-                ProductSeeder::class,
-            ]);
-        }
+        // if (config('app.env') === 'local') {
+        //     $this->call([
+        //         BrandSeeder::class,
+        //         ProductSeeder::class,
+        //     ]);
+        // }
     }
 }
