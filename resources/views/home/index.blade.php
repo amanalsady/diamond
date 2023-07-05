@@ -99,7 +99,7 @@
                 <div class="col-lg-6">
                     <div class="single-discount-product mt-30">
                         <div class="product-image">
-                            <img src="assets/images/discount-product/85878f090d3b4f60acb6747d5550f309.jpg"
+                            <img src="assets/images/discount-product/473e7fe6e8d8eab084b945291adf456f.jpg"
                                 alt="Product">
                         </div> <!-- product image -->
                         <div class="product-content">
